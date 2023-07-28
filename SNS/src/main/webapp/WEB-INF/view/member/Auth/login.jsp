@@ -93,9 +93,8 @@ label {
 				<input type="text" placeholder="아이디또는 휴대폰번호" /> <input
 					type="password" placeholder="비밀번호" />
 				<div class="ex2">
-					<a href=<c:url value="/login.do" /> class="ex1"
-						style="text-decoration: none; color: black;"><button
-							style="width: 200px; height: 50px; background-color: white;">로그인</button></a>
+					<button
+							style="width: 200px; height: 50px; background-color: white;">로그인</button>
 				</div>
 			</div>
 		</div>

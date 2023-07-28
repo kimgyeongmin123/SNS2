@@ -50,12 +50,12 @@ h1 {
 	width: 900px;
 	flex: 1; /* 콘텐츠에 맞게 높이를 늘림 */
 	overflow-y: auto; /* 내용이 넘칠 경우 스크롤 처리 */
+	border : 1px solid gray;
 }
 
 .chatbox{
 	height : 800px;
 	min-height: 300px;
-	border : 1px solid gray;
 }
 
 .sendbox {
