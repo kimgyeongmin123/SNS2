@@ -113,25 +113,24 @@ button {
 					type="password" placeholder="비밀번호" />
 				<div class="ex2">
 					<button>로그인</button>
-		</form>
-		<form id="joinForm">
-			<a href="javascript:void(0);" onclick="submitJoinForm();" class="ex1">
-				<button>회원가입</button>
-			</a>
-		</form>
-
 				</div>
 			</div>
-		</div>
+		</form>
+
+
+
+	</div>
+	<button onclick="goToJoinPage()">회원가입을 하시려면 이곳을 클릭하세요.</button>
 	<%-- msg 변수에 값이 있을 때에만 출력 --%>
 	<c:if test="${not empty msg}">
 		<div class="msg">${msg}</div>
 	</c:if>
 
 	<script>
-		function submitJoinForm() {
-			document.getElementById("joinForm").submit();
+		function goToJoinPage() {
+			window.location.href = "<c:url value='/join.jsp' />";
 		}
 	</script>
+
 </body>
 </html>

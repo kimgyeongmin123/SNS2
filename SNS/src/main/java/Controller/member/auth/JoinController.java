@@ -20,6 +20,11 @@ public class JoinController extends HttpServlet implements SubController {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+    	
+    	// JSP 파일 경로 설정
+        String jspPath = "/join.jsp";
+        
+        
         req.setCharacterEncoding("UTF-8");
 
         String id = req.getParameter("id");
