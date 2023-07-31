@@ -36,14 +36,25 @@ h1 {
 	justify-content: space-evenly;
 	flex-grow: 2;
 	border-radius: 5%;
+	width: 420px;
+	height: 280px;
+	background-color: black;
+	padding-top: 10px;
+	text-align: center;
+	background-color: black;
+	padding-top: 10px;
+	padding-top: 10px;
 }
 
 div>input {
 	display: flex;
 	font-size: 30px;
-	width: 420px;
+	width: 350px;
 	height: 40px;
-	margin-left: 30px;
+	margint: 30px;
+	color: white;
+	background-color: black;
+	border-color: black;
 }
 
 a {
@@ -72,6 +83,14 @@ label {
 	font-weight: bold;
 	text-align: center;
 }
+
+button {
+	width: 200px;
+	height: 50px;
+	background-color: white;
+	text-decoration: none;
+	color: black;
+}
 </style>
 </head>
 <body>
@@ -79,35 +98,39 @@ label {
 	<h1>
 		<label>WeSee</label>
 	</h1>
-	
-	
-	<form action="login.do" method="post">
-		<div class="bigbox">
-			<div class="wesee">
-				<label>우리는 바라고 -Wish-<br>우리는 본다. -WeSee-
-				</label>
-			</div>
 
-			<div class="box"
-				style="width: 420px; height: 280px; background-color: black; padding-top: 10px; text-align: center;">
-				<input type="text" placeholder="아이디또는 휴대폰번호" /> <input
+
+	<div class="bigbox">
+		<div class="wesee">
+			<label>우리는 바라고 -Wish-<br>우리는 본다. -WeSee-
+			</label>
+		</div>
+
+		<form action="login.do" method="post">
+			<div class="box">
+				<input name="id" type="text" placeholder="아이디" /> <input name="pw"
 					type="password" placeholder="비밀번호" />
 				<div class="ex2">
-					<button
-							style="width: 200px; height: 50px; background-color: white;">로그인</button>
-				</div>
-			</div>
-		</div>
-	</form>
-	
-	
-	<a href=<c:url value="/join.do" /> class="ex1"
-		style="text-decoration: none; color: black;"><button
-			style="width: 200px; height: 50px; background-color: white;">회원가입</button></a>
+					<button>로그인</button>
+		</form>
+		<form id="joinForm">
+			<a href="javascript:void(0);" onclick="submitJoinForm();" class="ex1">
+				<button>회원가입</button>
+			</a>
+		</form>
 
-	<div class="msg">${msg}</div>
+	</div>
+	</div>
+	</div>
+	<%-- msg 변수에 값이 있을 때에만 출력 --%>
+	<c:if test="${not empty msg}">
+		<div class="msg">${msg}</div>
+	</c:if>
 
-
-
+	<script>
+		function submitJoinForm() {
+			document.getElementById("joinForm").submit();
+		}
+	</script>
 </body>
 </html>
