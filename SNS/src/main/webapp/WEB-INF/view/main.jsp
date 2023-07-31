@@ -56,14 +56,19 @@ table>tr>th {
 		<button style="border: none; background-color: white;">
 			<img src="Resource/Search.png">
 		</button>
+		
+		<a href=<c:url value="/board/BoardAddController"/>>
 		<button style="border: none; background-color: white;">
 			<img src="Resource/Pencil.png">
 		</button>
+		</a>
+		
 		<a href=<c:url value="/messageController"/>>
 			<button style="border: none; background-color: white;">
 				<img src="Resource/Message.png">
 			</button>
 		</a>
+		
 		<button style="border: none; background-color: white;">
 			<img src="Resource/Person.png">
 		</button>

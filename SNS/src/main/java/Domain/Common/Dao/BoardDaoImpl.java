@@ -27,8 +27,7 @@ public class BoardDaoImpl extends ConnectionPool implements BoardDao {
 		pstmt = conn.prepareStatement("insert into tbl_board values (null,?,?,?,now(),null)");
 
 		pstmt.setString(1, dto.getId());
-		pstmt.setString(2, dto.getTitle());
-		pstmt.setString(3, dto.getContents());
+		pstmt.setString(3, dto.getContent());
 
 		return pstmt.executeUpdate();
 	}
@@ -45,8 +44,7 @@ public class BoardDaoImpl extends ConnectionPool implements BoardDao {
 				dto = new BoardDto();
 				dto.setNumber(rs.getInt("number"));
 				dto.setId(rs.getString("id"));
-				dto.setTitle(rs.getString("title"));
-				dto.setContents(rs.getString("contents"));
+				dto.setContent(rs.getString("content"));
 				dto.setDate(rs.getString("date"));
 				dto.setHits(rs.getInt("hits"));
 				list.add(dto);
@@ -68,7 +66,6 @@ public class BoardDaoImpl extends ConnectionPool implements BoardDao {
 			dto = new BoardDto();
 			dto.setNumber(rs.getInt("number"));
 			dto.setId(rs.getString("id"));
-			dto.setTitle(rs.getString("title"));
 			dto.setDate(rs.getString("date"));
 			dto.setHits(rs.getInt("hits"));
 			rs.close();
@@ -133,7 +130,6 @@ public class BoardDaoImpl extends ConnectionPool implements BoardDao {
 			dto = new BoardDto();
 			dto.setNumber(rs.getInt("number"));
 			dto.setId(rs.getString("id"));
-			dto.setTitle(rs.getString("title"));
 			dto.setDate(rs.getString("date"));
 			dto.setHits(rs.getInt("hits"));
 			rs.close();
@@ -146,8 +142,7 @@ public class BoardDaoImpl extends ConnectionPool implements BoardDao {
 	@Override
 	public int update(BoardDto dto) throws Exception {
 		pstmt = conn.prepareStatement("update tbl_board set title=?,contents=?");
-		pstmt.setString(3, dto.getTitle());
-		pstmt.setString(4, dto.getContents());
+		pstmt.setString(4, dto.getContent());
 
 		return pstmt.executeUpdate();
 	}

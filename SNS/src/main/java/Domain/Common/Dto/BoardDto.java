@@ -3,8 +3,7 @@ package Domain.Common.Dto;
 public class BoardDto {
 	private int number; 		//게시물 번호
 	private String id;  		//userid 
-	private String title;		//글제목
-	private String contents;	//글내용
+	private String content;		//글내용
 	private String date;		//작성날짜
 	private int hits;			//조회수
 	
@@ -12,11 +11,10 @@ public class BoardDto {
 	public BoardDto() {}
 	
 //	모든 인자를 받는 생성자
-	public BoardDto(int number, String id, String title, String contents, String date, int hits) {
+	public BoardDto(int number, String id, String title, String content, String date, int hits) {
 		this.number = number;
 		this.id = id;
-		this.title = title;
-		this.contents = contents;
+		this.content = content;
 		this.date = date;
 		this.hits = hits;
 	}
@@ -24,7 +22,7 @@ public class BoardDto {
 //	toString 재정의
 	@Override
 	public String toString() {
-		return "ContentsDto [number=" + number + ", id=" + id + ", title=" + title + ", contents=" + contents
+		return "ContentsDto [number=" + number + ", id=" + id + "contents=" + content
 				+ ", date=" + date + ", hits=" + hits + "]";
 	}
 
@@ -45,20 +43,12 @@ public class BoardDto {
 		this.id = id;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getContent() {
+		return content;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getContents() {
-		return contents;
-	}
-
-	public void setContents(String contents) {
-		this.contents = contents;
+	public void setContent(String content) {
+		this.content = content;
 	}
 
 	public String getDate() {

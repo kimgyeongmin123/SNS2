@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Controller.SubController;
 import Domain.Common.Dao.ConnectionPool;
@@ -59,6 +60,10 @@ public class LoginController  implements SubController{
 			//4 View로 전달 
 			if(isLogin)
 			{
+				// 세션에 사용자 아이디 저장
+                HttpSession session = req.getSession();
+                session.setAttribute("userId", id);
+                
 				//main.do 이동 - Redirect
 				resp.sendRedirect(req.getContextPath()+"/main.do");
 			}
