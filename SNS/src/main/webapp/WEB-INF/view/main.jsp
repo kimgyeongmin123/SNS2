@@ -57,13 +57,15 @@ table>tr>th {
 			<img src="Resource/Search.png">
 		</button>
 		
-		<a href=<c:url value="/board/BoardAddController"/>>
+		<!-- write로 -->
+		<a href=<c:url value="/boardAdd.do"/>>
 		<button style="border: none; background-color: white;">
 			<img src="Resource/Pencil.png">
 		</button>
 		</a>
 		
-		<a href=<c:url value="/messageController"/>>
+		<!-- sendMessage로 -->
+		<a href=<c:url value="/message.do"/>>
 			<button style="border: none; background-color: white;">
 				<img src="Resource/Message.png">
 			</button>

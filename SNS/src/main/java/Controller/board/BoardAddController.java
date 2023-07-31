@@ -1,8 +1,11 @@
 package Controller.board;
 
 import java.io.IOException;
+import java.io.Serializable;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,18 +13,28 @@ import Controller.SubController;
 import Domain.Common.Dto.BoardDto;
 import Domain.Common.Service.BoardService;
 import Domain.Common.Service.BoardServiceImpl;
-import Domain.Common.Service.MemberService;
-import Domain.Common.Service.MemberServiceImpl;
-
-public class BoardAddController implements SubController {
+@WebServlet("/boardAdd.do")
+public class BoardAddController extends HttpServlet implements SubController, Serializable {
 
 	private BoardService service = BoardServiceImpl.getInstance();
-	
-	// JSP 파일 경로 설정
-    String jspPath = "/WEB-INF/view/write.jsp";
 
+	
+	  // 직렬화를 위한 serialVersionUID 선언
+    private static final long serialVersionUID = 1L;
+    
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // JSP 파일 경로 설정
+        String jspPath = "/WEB-INF/view/write.jsp";
+
+        // JSP 파일을 포함시킴
+        getServletContext().getRequestDispatcher(jspPath).forward(request, response);
+    }
+	
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
+		
+		
 		System.out.println("BookAddController execute");
 
 		// GET 요청 처리
