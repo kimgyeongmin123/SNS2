@@ -31,20 +31,24 @@ public class JoinController extends HttpServlet implements SubController {
         String pw = req.getParameter("pw");
         String pwCheck = req.getParameter("pw-check");
         String username = req.getParameter("username"); // HTML의 input name이 "name"으로 되어 있어서 수정
+        String phonePrefix = req.getParameter("phonePrefix"); // 콤보박스에서 선택된 번호
         String phone = req.getParameter("phone");
         String birth = req.getParameter("birth");
 
         if (!pw.equals(pwCheck)) {
-            req.setAttribute("msg", "비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+            req.setAttribute("msg", "패스워드를 잘 확인해보십시오.");
             req.getRequestDispatcher("/join.jsp").forward(req, resp);
             return;
         }
+        
+     // 번호 조합해서 전화번호 생성
+        String fullPhoneNumber = phonePrefix + phone;
 
         MemberDto newMember = new MemberDto();
         newMember.setId(id);
         newMember.setPw(pw);
         newMember.setUsername(username);
-        newMember.setPhone(phone);
+        newMember.setPhone(fullPhoneNumber); // 조합한 전화번호를 넣어줍니다
         newMember.setBirth(birth);
         newMember.setRole("MEMBER");
 

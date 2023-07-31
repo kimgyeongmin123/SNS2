@@ -91,6 +91,24 @@ button {
 	background-color: white;
 	text-decoration: none;
 	color: black;
+	border-style: none;
+	cursor: pointer;
+}
+
+.msg{
+	width : 650px;
+	font-size: 1.5rem;
+	border-top : 2px solid gray;
+}
+
+.joinbox {
+	display: flex;
+	justify-content: space-around;
+}
+
+.join{
+	width : 450px;
+	margin-left: 80px;
 }
 </style>
 </head>
@@ -120,11 +138,14 @@ button {
 
 
 	</div>
-	<button onclick="goToJoinPage()">회원가입을 하시려면 이곳을 클릭하세요.</button>
-	<%-- msg 변수에 값이 있을 때에만 출력 --%>
-	<c:if test="${not empty msg}">
-		<div class="msg">${msg}</div>
-	</c:if>
+	<div class="joinbox">
+			<%-- msg 변수에 값이 있을 때에만 출력 --%>
+			<c:if test="${not empty msg}">
+				<div class="msg">${msg}</div>
+			</c:if>
+		<button class="join" onclick="goToJoinPage()">회원가입을 하시려면 이곳을 클릭하세요.</button>
+	</div>
+
 
 	<script>
 		function goToJoinPage() {
