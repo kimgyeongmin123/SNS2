@@ -56,21 +56,21 @@ table>tr>th {
 		<button style="border: none; background-color: white;">
 			<img src="Resource/Search.png">
 		</button>
-		
+
 		<!-- write로 -->
-		<a href=<c:url value="/boardAdd.do"/>>
-		<button style="border: none; background-color: white;">
-			<img src="Resource/Pencil.png">
-		</button>
+		<a href=<c:url value="/add.do"/>>
+			<button style="border: none; background-color: white;">
+				<img src="Resource/Pencil.png">
+			</button>
 		</a>
-		
+
 		<!-- sendMessage로 -->
 		<a href=<c:url value="/message.do"/>>
 			<button style="border: none; background-color: white;">
 				<img src="Resource/Message.png">
 			</button>
 		</a>
-		
+
 		<button style="border: none; background-color: white;">
 			<img src="Resource/Person.png">
 		</button>
@@ -236,9 +236,6 @@ table>tr>th {
 			</tr>
 		</table>
 	</div>
-
-
-
 
 
 

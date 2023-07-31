@@ -45,15 +45,15 @@ public class FrontController extends HttpServlet {
 //		member.auth
 		map.put(projectPath + "/login.do", new LoginController());
 		map.put(projectPath + "/logout.do", new LogoutController());
-		
-		 // Mypage
-        map.put(projectPath + "/mypage.do", new MemberPageController());
+
+		// Mypage
+		map.put(projectPath + "/mypage.do", new MemberPageController());
 
 //		main
 		map.put(projectPath + "/main.do", new MainController());
-		
-		//Join
-        map.put(projectPath + "/register.do", new JoinController());
+
+		// Join
+		map.put(projectPath + "/register.do", new JoinController());
 	}
 
 	@Override

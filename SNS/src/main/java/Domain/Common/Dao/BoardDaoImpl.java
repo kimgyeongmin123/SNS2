@@ -1,7 +1,12 @@
 package Domain.Common.Dao;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import Domain.Common.Dto.BoardDto;
 
@@ -19,17 +24,30 @@ public class BoardDaoImpl extends ConnectionPool implements BoardDao {
 	private BoardDaoImpl() {
 
 	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    // 사용자 ID 값 가져오기
+	    String userId = request.getParameter("userId");
+
+	    // 기타 폼 데이터 가져오기
+	    String content = request.getParameter("content");
+	}
 
 //		CURD
 //	글 작성
 	@Override
 	public int insert(BoardDto dto) throws Exception {
-		pstmt = conn.prepareStatement("insert into tbl_board values (null,?,?,?,now(),null)");
+		
+		
+		pstmt = conn.prepareStatement("insert into tbl_board values (null,now(),?,now(),null)");
 
-		pstmt.setString(1, dto.getId());
-		pstmt.setString(3, dto.getContent());
+	//	pstmt.setString(1, dto.getId());
+		pstmt.setString(1, dto.getContent());
 
-		return pstmt.executeUpdate();
+		int result=pstmt.executeUpdate();
+		pstmt.close();
+		
+		return result;
 	}
 
 //	전체글 조회
@@ -87,7 +105,6 @@ public class BoardDaoImpl extends ConnectionPool implements BoardDao {
 			dto = new BoardDto();
 			dto.setNumber(rs.getInt("number"));
 			dto.setId(rs.getString("id"));
-			dto.setTitle(rs.getString("title"));
 			dto.setDate(rs.getString("date"));
 			dto.setHits(rs.getInt("hits"));
 			rs.close();
@@ -108,7 +125,6 @@ public class BoardDaoImpl extends ConnectionPool implements BoardDao {
 			dto = new BoardDto();
 			dto.setNumber(rs.getInt("number"));
 			dto.setId(rs.getString("id"));
-			dto.setTitle(rs.getString("title"));
 			dto.setDate(rs.getString("date"));
 			dto.setHits(rs.getInt("hits"));
 			rs.close();

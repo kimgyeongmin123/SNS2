@@ -61,15 +61,16 @@ h1 {
 		</header>
 		<main>
 			<section>
-				<div class=show--block>사용자ID : ${sessionScope.userId}</div>
-				<form action="BoardAddController.do" method="post">
+				<form action="add.do" method="post">
+					<input type="hidden" name="userId" value="${sessionScope.userId}"
+						class="show--block">사용자ID : ${sessionScope.userId}</input>
 					<div>
 						글 내용을 입력하시라요.
 						<textarea name="content" id="content">여기에 입력</textarea>
 					</div>
 					<button type="submit">저장</button>
 				</form>
-
+				<div class="msg">${msg}</div>
 
 
 
