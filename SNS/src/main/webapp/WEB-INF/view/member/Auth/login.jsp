@@ -51,7 +51,8 @@ div>input {
 	font-size: 30px;
 	width: 350px;
 	height: 40px;
-	margint: 30px;
+	margin: 30px;
+	margin-bottom: 10px;
 	color: white;
 	background-color: black;
 	border-color: black;
@@ -119,9 +120,9 @@ button {
 			</a>
 		</form>
 
-	</div>
-	</div>
-	</div>
+				</div>
+			</div>
+		</div>
 	<%-- msg 변수에 값이 있을 때에만 출력 --%>
 	<c:if test="${not empty msg}">
 		<div class="msg">${msg}</div>
