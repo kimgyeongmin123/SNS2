@@ -49,7 +49,7 @@ public class BoardAddController implements SubController {
 				// 2 입력값 검증
 				if (content.isEmpty()) {
 					System.out.println("[ERROR] Data Validation Check Error!");
-					req.setAttribute("msg", "[ERROR] 제목이나 내용을 입력해주세요.");
+					req.setAttribute("msg", "[ERROR] 내용을 입력해주세요.");
 					req.getRequestDispatcher("/WEB-INF/view/write.jsp").forward(req, resp);
 					return;
 				}
@@ -68,7 +68,8 @@ public class BoardAddController implements SubController {
 
 				if (isInserted > 0) {
 					// 게시물 등록 성공 시 메인 페이지로 이동 - Redirect
-					resp.sendRedirect(req.getContextPath() + "/main.jsp");
+//					resp.sendRedirect(req.getContextPath() + "/WEB-INF/view/main.jsp");
+					req.getRequestDispatcher("/WEB-INF/view/main.jsp").forward(req, resp);
 				} else {
 					// 게시물 등록 실패 시 오류 메시지와 함께 글 작성 페이지로 이동 - Forward
 					req.setAttribute("msg", "게시물 등록에 실패했습니다.");

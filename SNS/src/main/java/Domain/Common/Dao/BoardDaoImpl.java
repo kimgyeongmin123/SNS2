@@ -39,7 +39,7 @@ public class BoardDaoImpl extends ConnectionPool implements BoardDao {
 	public int insert(BoardDto dto) throws Exception {
 		
 		System.out.println("보드Dao 인서트로 들어왔슴다!!!");
-		pstmt = conn.prepareStatement("insert into tbl_board values (null,?,?,now(),null,null)");
+		pstmt = conn.prepareStatement("insert into tbl_board values (null,?,?,now(),0,0)");
 
 		pstmt.setString(1, dto.getId());
 		pstmt.setString(2, dto.getContent());
