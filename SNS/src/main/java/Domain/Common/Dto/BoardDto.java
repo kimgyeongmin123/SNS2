@@ -12,27 +12,30 @@ public class BoardDto {
 	private String content; // 글내용
 	private String date; // 작성날짜
 	private int hits; // 조회수
+	private int like; // 좋아요
 
 //	디폴트 생성자
 	public BoardDto() {
+		System.out.println("여러분 보드Dto 들어옵니다~");
 	}
 
 	
 
 //	모든 인자를 받는 생성자
-	public BoardDto(int number, String id, String title, String content, String date, int hits) {
+	public BoardDto(int number, String id, String title, String content, String date, int hits, int like) {
 		this.number = number;
 		this.id = id;
 		this.content = content;
 		this.date = date;
 		this.hits = hits;
+		this.like = like;
 	}
 
 //	toString 재정의
 	@Override
 	public String toString() {
 		return "ContentsDto [number=" + number + ", id=" + id + "contents=" + content + ", date=" + date + ", hits="
-				+ hits + "]";
+				+ hits + ", like="+ like +"]";
 	}
 
 //	getter and setter
@@ -74,6 +77,14 @@ public class BoardDto {
 
 	public void setHits(int hits) {
 		this.hits = hits;
+	}
+	
+	public int getlike() {
+		return like;
+	}
+	
+	public void setlike(int like) {
+		this.like = like;
 	}
 
 }

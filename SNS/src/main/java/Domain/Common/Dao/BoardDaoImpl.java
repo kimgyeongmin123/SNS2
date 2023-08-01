@@ -38,11 +38,11 @@ public class BoardDaoImpl extends ConnectionPool implements BoardDao {
 	@Override
 	public int insert(BoardDto dto) throws Exception {
 		
-		
-		pstmt = conn.prepareStatement("insert into tbl_board values (null,now(),?,now(),null)");
+		System.out.println("보드Dao 인서트로 들어왔슴다!!!");
+		pstmt = conn.prepareStatement("insert into tbl_board values (null,?,?,now(),null,null)");
 
-	//	pstmt.setString(1, dto.getId());
-		pstmt.setString(1, dto.getContent());
+		pstmt.setString(1, dto.getId());
+		pstmt.setString(2, dto.getContent());
 
 		int result=pstmt.executeUpdate();
 		pstmt.close();

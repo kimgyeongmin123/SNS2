@@ -3,8 +3,6 @@ package Controller.board;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,60 +11,57 @@ import Domain.Common.Dto.BoardDto;
 import Domain.Common.Service.BoardService;
 import Domain.Common.Service.BoardServiceImpl;
 
-@WebServlet("/add.do")
-public class BoardAddController extends HttpServlet implements SubController {
+public class BoardAddController implements SubController {
 
 	BoardService service = BoardServiceImpl.getInstance();
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// JSP 파일 경로 설정
-		String jspPath = "/WEB-INF/view/write.jsp";
-
-		// JSP 파일을 포함시킴
-		getServletContext().getRequestDispatcher(jspPath).forward(request, response);
-	}
 
 	@Override
 	public void execute(HttpServletRequest req, HttpServletResponse resp) {
 		System.out.println("BoardAddController execute");
 
 		// GET 요청 처리
-//		if (req.getMethod().equals("GET")) {
-//			try {
-//				System.out.println("get req들어옴");
-//				req.getRequestDispatcher("/WEB-INF/view/write.jsp").forward(req, resp);
-//				return;
-//			} catch (ServletException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			return;
-//		}
+		if (req.getMethod().equals("GET")) {
+			try {
+				System.out.println("get req들어옴");
+				req.getRequestDispatcher("/WEB-INF/view/write.jsp").forward(req, resp);
+				return;
+			} catch (ServletException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return;
+		}
 
 		// -------------------------------------------------------------------
 		// -------------------------------------------------------------------
 		// post 요청 처리
 		if (req.getMethod().equals("POST")) {
-			String content = (String) req.getParameter("content");
-			System.out.println("BoardAddController paramtes : " + content);
-
+			
+			String content = req.getParameter("content");
+			String userId = (String) req.getSession().getAttribute("userId");
+			
+			System.out.println("BoardAddController paramtes : " + content + userId);
+			
 			try {
 				// 2 입력값 검증
 				if (content.isEmpty()) {
 					System.out.println("[ERROR] Data Validation Check Error!");
 					req.setAttribute("msg", "[ERROR] 제목이나 내용을 입력해주세요.");
-					req.getRequestDispatcher("/write.jsp").forward(req, resp);
+					req.getRequestDispatcher("/WEB-INF/view/write.jsp").forward(req, resp);
 					return;
 				}
+				
+
 
 				// BoardDto 객체 생성하여 title과 contents를 담음
 				BoardDto dto = new BoardDto();
 				dto.setContent(content);
+				 dto.setId(userId);
 				System.out.println(content);
+				System.out.println(userId);
 
 				// 3 서비스 실행 - BoardService를 활용하여 데이터 삽입
 				int isInserted = service.boardAdd(dto);
@@ -77,7 +72,7 @@ public class BoardAddController extends HttpServlet implements SubController {
 				} else {
 					// 게시물 등록 실패 시 오류 메시지와 함께 글 작성 페이지로 이동 - Forward
 					req.setAttribute("msg", "게시물 등록에 실패했습니다.");
-					req.getRequestDispatcher("/write.jsp").forward(req, resp);
+					req.getRequestDispatcher("/WEB-INF/view/write.jsp").forward(req, resp);
 				}
 
 			} catch (Exception e) {

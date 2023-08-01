@@ -62,7 +62,7 @@ public class BoardServiceImpl implements BoardService{
 		return Bdao.search_title(title);
 	}
 
-	// 글 등록하기(회원)
+	// 글 등록하기
 	public int boardAdd(BoardDto dto) throws Exception {
 		System.out.println("BoardService's boardAdd()");
 
