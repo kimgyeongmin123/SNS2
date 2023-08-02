@@ -42,10 +42,10 @@ table>tr>th {
 	display: none;
 }
 
-.test{
-width : 900px;
-height:1000px;
-border:1px solid;
+.test {
+	width: 900px;
+	height: 1000px;
+	border: 1px solid;
 }
 </style>
 </head>
@@ -242,24 +242,35 @@ border:1px solid;
 			</tr>
 		</table>
 	</div>
+	
+	<h1>게시물 목록</h1>
+	<p>Welcome, ${userId}!</p>
+    <c:if test="${empty boardList}">
+		<p class="no-data">데이터가 없습니다.</p>
+	</c:if>
 
-<!-- 게시물 목록을 출력하는 부분 -->
-    <%
-        List<BoardDto> boardList = (List<BoardDto>) request.getAttribute("boardList");
-        for (BoardDto board : boardList) {
-    %>
-    <div>
-        <p>작성자: <%= board.getId() %></p>
-        <p>작성일: <%= board.getDate() %></p>
-        <p>내용: <%= board.getContent() %></p>
-        <p>조회수: <%= board.getHits() %></p>
-        <!-- 기타 게시물 정보를 출력할 수 있습니다. -->
-        <hr>
-    </div>
-    <%
-        }
-    %>
-
+	<c:if test="${not empty boardList}">
+		<table border="1">
+			<tr>
+				<th>글 번호</th>
+				<th>작성자</th>
+				 <th>글 내용</th> 
+				<th>작성날짜</th>
+				<th>조회수</th>
+				<th>좋아요</th>
+			</tr>
+			<c:forEach var="board" items="${boardList}">
+				<tr>
+					<td>${board.number}</td>
+					<td>${board.id}</td>
+				 	<td>${board.content}</td> 
+					<td>${board.date}</td>
+					<td>${board.hits}</td>
+					<td>${board.like}</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</c:if>
 
 </body>
 </html>

@@ -64,8 +64,8 @@ public class LoginController  implements SubController{
                 HttpSession session = req.getSession();
                 session.setAttribute("userId", id);
                 
-				//main.do 이동 - Redirect
-				resp.sendRedirect(req.getContextPath()+"/main.do");
+				//list.do 이동 - Redirect 
+				resp.sendRedirect(req.getContextPath()+"/list.do");
 			}
 			else
 			{

@@ -68,8 +68,8 @@ public class BoardAddController implements SubController {
 
 				if (isInserted > 0) {
 					// 게시물 등록 성공 시 메인 페이지로 이동 - Redirect
-//					resp.sendRedirect(req.getContextPath() + "/WEB-INF/view/main.jsp");
-					req.getRequestDispatcher("/WEB-INF/view/main.jsp").forward(req, resp);
+//					req.getRequestDispatcher("/WEB-INF/view/main.jsp").forward(req, resp);
+					resp.sendRedirect(req.getContextPath()+"/list.do");
 				} else {
 					// 게시물 등록 실패 시 오류 메시지와 함께 글 작성 페이지로 이동 - Forward
 					req.setAttribute("msg", "게시물 등록에 실패했습니다.");

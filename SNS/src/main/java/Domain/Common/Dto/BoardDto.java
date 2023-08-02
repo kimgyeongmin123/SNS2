@@ -34,7 +34,7 @@ public class BoardDto {
 //	toString 재정의
 	@Override
 	public String toString() {
-		return "ContentsDto [number=" + number + ", id=" + id + "contents=" + content + ", date=" + date + ", hits="
+		return "ContentsDto [number=" + number + ", id=" + id + "content=" + content + ", date=" + date + ", hits="
 				+ hits + ", like="+ like +"]";
 	}
 
@@ -79,11 +79,11 @@ public class BoardDto {
 		this.hits = hits;
 	}
 	
-	public int getlike() {
+	public int getLike() {
 		return like;
 	}
 	
-	public void setlike(int like) {
+	public void setLike(int like) {
 		this.like = like;
 	}
 
