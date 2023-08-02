@@ -41,6 +41,12 @@ table>tr>th {
 .scroll::-webkit-scrollbar {
 	display: none;
 }
+
+.test{
+width : 900px;
+height:1000px;
+border:1px solid;
+}
 </style>
 </head>
 <body class="scroll">
@@ -237,6 +243,22 @@ table>tr>th {
 		</table>
 	</div>
 
+<!-- 게시물 목록을 출력하는 부분 -->
+    <%
+        List<BoardDto> boardList = (List<BoardDto>) request.getAttribute("boardList");
+        for (BoardDto board : boardList) {
+    %>
+    <div>
+        <p>작성자: <%= board.getId() %></p>
+        <p>작성일: <%= board.getDate() %></p>
+        <p>내용: <%= board.getContent() %></p>
+        <p>조회수: <%= board.getHits() %></p>
+        <!-- 기타 게시물 정보를 출력할 수 있습니다. -->
+        <hr>
+    </div>
+    <%
+        }
+    %>
 
 
 </body>

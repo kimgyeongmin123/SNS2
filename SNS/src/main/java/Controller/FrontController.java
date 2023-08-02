@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import Controller.board.BoardAddController;
 import Controller.board.BoardDeleteController;
+import Controller.board.BoardListController;
 import Controller.board.BoardSearchController;
 import Controller.board.BoardUpdateController;
 import Controller.member.MemberAddController;
@@ -35,6 +36,7 @@ public class FrontController extends HttpServlet {
 		map.put(projectPath + "/board/delete.do", new BoardDeleteController());
 		map.put(projectPath + "/add.do", new BoardAddController());
 		map.put(projectPath + "/board/update.do", new BoardUpdateController());
+		map.put(projectPath + "/list.do", new BoardListController());
 
 //		member
 		map.put(projectPath + "/member/search.do", new MemberSearchController());
