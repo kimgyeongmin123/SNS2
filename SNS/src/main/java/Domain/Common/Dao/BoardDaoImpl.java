@@ -162,7 +162,7 @@ public class BoardDaoImpl extends ConnectionPool implements BoardDao {
 //	내가 쓴 글 수정
 	@Override
 	public int update(BoardDto dto) throws Exception {
-		pstmt = conn.prepareStatement("update tbl_board set title=?,contentss=?");
+		pstmt = conn.prepareStatement("update tbl_board set title=?,contents=?");
 		pstmt.setString(4, dto.getContents());
 
 		return pstmt.executeUpdate();

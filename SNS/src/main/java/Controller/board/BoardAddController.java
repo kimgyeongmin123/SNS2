@@ -47,7 +47,7 @@ public class BoardAddController implements SubController {
 			
 			try {
 				// 2 입력값 검증
-				if (contents.isEmpty()) {
+				if (contents == null || contents.isEmpty()) {
 					System.out.println("[ERROR] Data Validation Check Error!");
 					req.setAttribute("msg", "[ERROR] 내용을 입력해주세요.");
 					req.getRequestDispatcher("/WEB-INF/view/write.jsp").forward(req, resp);
