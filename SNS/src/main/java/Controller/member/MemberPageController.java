@@ -22,25 +22,26 @@ public class MemberPageController implements SubController {
 		System.out.println("execute로 들어옴");
 
 		// GET 요청 처리
-		if (req.getMethod().equals("GET")) {
-			try {
-				System.out.println("멤버페이지컨트롤의 get req들어옴");
-				req.getRequestDispatcher("/WEB-INF/view/member/mypage.jsp").forward(req, resp);
-				return;
-			} catch (ServletException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return;
-		}
+//		if (req.getMethod().equals("GET")) {
+//			try {
+//				System.out.println("멤버페이지컨트롤의 get req들어옴");
+//				req.getRequestDispatcher("/WEB-INF/view/member/mypage.jsp").forward(req, resp);
+//				return;
+//			} catch (ServletException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			return;
+//		}
 
 		// -------------------------------------------------------------------
 		// -------------------------------------------------------------------
 		// post 요청 처리
 		try {
+			System.out.println("멤버페이지컨트롤의 get req들어옴");
 			HttpSession session = req.getSession();
 			String role = (String) session.getAttribute("ROLE");
 			System.out.println("session: " + role);

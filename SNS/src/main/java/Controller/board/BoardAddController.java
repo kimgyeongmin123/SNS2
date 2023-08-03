@@ -40,14 +40,14 @@ public class BoardAddController implements SubController {
 		// post 요청 처리
 		if (req.getMethod().equals("POST")) {
 			
-			String content = req.getParameter("content");
+			String contents = req.getParameter("contents");
 			String userId = (String) req.getSession().getAttribute("userId");
 			
-			System.out.println("BoardAddController paramtes : " + content + userId);
+			System.out.println("BoardAddController paramtes : " + contents + userId);
 			
 			try {
 				// 2 입력값 검증
-				if (content.isEmpty()) {
+				if (contents.isEmpty()) {
 					System.out.println("[ERROR] Data Validation Check Error!");
 					req.setAttribute("msg", "[ERROR] 내용을 입력해주세요.");
 					req.getRequestDispatcher("/WEB-INF/view/write.jsp").forward(req, resp);
@@ -58,9 +58,9 @@ public class BoardAddController implements SubController {
 
 				// BoardDto 객체 생성하여 title과 contents를 담음
 				BoardDto dto = new BoardDto();
-				dto.setContent(content);
+				dto.setContents(contents);
 				 dto.setId(userId);
-				System.out.println(content);
+				System.out.println(contents);
 				System.out.println(userId);
 
 				// 3 서비스 실행 - BoardService를 활용하여 데이터 삽입

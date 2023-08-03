@@ -30,7 +30,7 @@ public class BoardDaoImpl extends ConnectionPool implements BoardDao {
 	    String userId = request.getParameter("userId");
 
 	    // 기타 폼 데이터 가져오기
-	    String content = request.getParameter("content");
+	    String contents = request.getParameter("contents");
 	}
 
 //		CURD
@@ -42,7 +42,7 @@ public class BoardDaoImpl extends ConnectionPool implements BoardDao {
 		pstmt = conn.prepareStatement("insert into tbl_board values (null,?,?,now(),0,0)");
 
 		pstmt.setString(1, dto.getId());
-		pstmt.setString(2, dto.getContent());
+		pstmt.setString(2, dto.getContents());
 
 		int result=pstmt.executeUpdate();
 		pstmt.close();
@@ -62,7 +62,7 @@ public class BoardDaoImpl extends ConnectionPool implements BoardDao {
 				dto = new BoardDto();
 				dto.setNumber(rs.getInt("number"));
 				dto.setId(rs.getString("id"));
-				dto.setContent(rs.getString("contents"));
+				dto.setContents(rs.getString("contents"));
 				dto.setDate(rs.getString("date"));
 				dto.setHits(rs.getInt("hits"));
 				dto.setLike(rs.getInt("like"));
@@ -147,7 +147,7 @@ public class BoardDaoImpl extends ConnectionPool implements BoardDao {
 			dto = new BoardDto();
 			dto.setNumber(rs.getInt("number"));
 			dto.setId(rs.getString("id"));
-			dto.setContent(rs.getString("contents"));
+			dto.setContents(rs.getString("contents"));
 			dto.setDate(rs.getString("date"));
 			dto.setHits(rs.getInt("hits"));
 			dto.setLike(rs.getInt("like"));
@@ -162,8 +162,8 @@ public class BoardDaoImpl extends ConnectionPool implements BoardDao {
 //	내가 쓴 글 수정
 	@Override
 	public int update(BoardDto dto) throws Exception {
-		pstmt = conn.prepareStatement("update tbl_board set title=?,contents=?");
-		pstmt.setString(4, dto.getContent());
+		pstmt = conn.prepareStatement("update tbl_board set title=?,contentss=?");
+		pstmt.setString(4, dto.getContents());
 
 		return pstmt.executeUpdate();
 	}

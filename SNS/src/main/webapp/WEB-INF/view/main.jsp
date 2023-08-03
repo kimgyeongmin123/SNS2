@@ -108,7 +108,7 @@ table>tr>th {
 					</tr>
 					<tr>
 						<th style="background-color: white; height: 450px;"><div
-								class="scroll" style="max-height: 450px; overflow: auto;">${board.content}</div></th>
+								class="scroll" style="max-height: 450px; overflow: auto;">${board.contents}</div></th>
 					</tr>
 					<tr>
 						<th style="display: flex; height: 28px; background-color: white;">
@@ -192,7 +192,7 @@ table>tr>th {
 					<%-- 		<tr>
 					<td>${board.number}</td>
 					<td>${board.id}</td>
-				 	<td>${board.content}</td> 
+				 	<td>${board.contents}</td> 
 					<td>${board.date}</td>
 					<td>${board.hits}</td>
 					<td>${board.like}</td>
